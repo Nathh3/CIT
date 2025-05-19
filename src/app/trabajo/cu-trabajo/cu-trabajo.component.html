@@ -1,0 +1,56 @@
+<form>
+    <div class="mb-3">
+        <label for="idCliente" class="form-label">ID Cliente</label>
+        <input type="text" *ngIf="trabajo" class="form-control" id="idCliente" name="idCliente"
+            placeholder="Ingresa el ID del cliente" [(ngModel)]="trabajo.idCliente">
+    </div>
+    <div class="mb-3">
+        <label for="idTransportista" class="form-label">ID Transportista</label>
+        <input type="text" *ngIf="trabajo" class="form-control" id="idTransportista" name="idTransportista"
+            placeholder="Ingresa el ID del transportista" [(ngModel)]="trabajo.idTransportista">
+    </div>
+    <div class="mb-3">
+        <label for="lugarOrigen" class="form-label">Lugar de Origen</label>
+        <input type="text" *ngIf="trabajo" class="form-control" id="lugarOrigen" name="lugarOrigen"
+            placeholder="Ingresa el lugar de origen" [(ngModel)]="trabajo.lugarOrigen">
+    </div>
+    <div class="mb-3">
+        <label for="lugarDestino" class="form-label">Lugar de Destino</label>
+        <input type="text" *ngIf="trabajo" class="form-control" id="lugarDestino" name="lugarDestino"
+            placeholder="Ingresa el lugar de destino" [(ngModel)]="trabajo.lugarDestino">
+    </div>
+    <div class="mb-3">
+        <label for="fechaRecogida" class="form-label">Fecha de Recogida</label>
+        <input class="form-control" id="fechaRecogida" type="datetime-local" *ngIf="trabajo" name="fechaRecogida"
+            placeholder="Ingresa la fecha de recogida" [ngModel]="formatDateTimeLocal(trabajo.fechaRecogida)" (ngModelChange)="updateDate($event)">
+    </div>
+    <div class="mb-3">
+        <label for="fechaEntrega" class="form-label">Fecha de Entrega</label>
+        <input class="form-control" id="fechaEntrega" type="datetime-local" *ngIf="trabajo" name="fechaEntrega"
+            placeholder="Ingresa la fecha de entrega" [ngModel]="formatDateTimeLocal(trabajo.fechaEntrega)" (ngModelChange)="updateDate($event)">
+    </div>
+    <div class="mb-3">
+        <label for="TipoCamionRequerido" class="form-label">Tipo Camion</label>
+        <input type="text" *ngIf="trabajo" class="form-control" id="TipoCamionRequerido" name="TipoCamionRequerido"
+            placeholder="Ingresa el tipo de camion" [(ngModel)]="trabajo.TipoCamionRequerido">
+    </div>
+    <div class="mb-3">
+        <label for="pesoxCarga" class="form-label">Peso por Carga</label>
+        <input type="number" *ngIf="trabajo" class="form-control" id="pesoxCarga" name="pesoxCarga"
+            placeholder="Ingresa el peso de la carga" [(ngModel)]="trabajo.pesoCarga">
+    </div>
+    <div class="mb-3">
+        <input type="radio" *ngIf="trabajo" id="comestibles-si" name="comestibles" value="S"
+            [(ngModel)]="trabajo.transporteComestibles">
+        <label for="comestibles-si">Sí, comestibles</label> <br>
+        <input type="radio" *ngIf="trabajo" id="comestibles-no" name="comestibles" value="N"
+            [(ngModel)]="trabajo.transporteComestibles">
+        <label for="comestibles-no">No, comestibles</label>
+    </div>
+    <div class="mb-3">
+        <input type="radio" *ngIf="trabajo" id="estibas-si" name="estibas" value="S" [(ngModel)]="trabajo.estibas">
+        <label for="estibas-si">Sí, estibas</label> <br>
+        <input type="radio" *ngIf="trabajo" id="estibas-no" name="estibas" value="N" [(ngModel)]="trabajo.estibas">
+        <label for="estibas-no">No, estibas</label>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+:root {
+    --primary-blue: #163057;
+    --secondary-blue: #B6BECA;
+    --main-font: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --second-font: 'Microsoft Sans Serif', Arial, Helvetica, sans-serif;
+    --third-font: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+}
+.navbar {
+    /* background-color: var(--primary-blue); * comente esta linea porque no sé por qué no cogía*/
+    background-color:#163057; 
+    img {
+        min-height: 34px;
+    }
+
+    h1 {
+        font-family: var(--main-font);
+        font-size:  30px;
+        color: white;
+    }
+.navbar-toggler{
+    background-color: #163057;
+    border: none;
+    margin-left: 8px;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.col-auto {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+
+.navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+}

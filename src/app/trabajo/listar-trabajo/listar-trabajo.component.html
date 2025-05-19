@@ -1,0 +1,80 @@
+<div class="row justify-content-end">
+  <div class="col-lg-1 col-12">
+    <button class="btn btn-success" (click)="NuevoTrabajo()"><i
+        class="bi bi-file-earmark-plus"></i>Nuevo
+    </button>
+
+    <div class="d-flex justify-content-center" *ngIf="isLoading">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="row" *ngIf="!isLoading">
+  <div class="col-12 overflow-auto">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">idTrabajo</th>
+          <th scope="col">idCliente</th>
+          <th scope="col">idTransportista</th>
+          <th scope="col">lugarOrigen</th>
+          <th scope="col">lugarDestino</th>
+          <th scope="col">fechaRecogida</th>
+          <th scope="col">fechaEntrega</th>
+          <th scope="col">TipoCamionRequerido</th>
+          <th scope="col">PesoCarga</th>
+          <th scope="col">TransporteComestibles</th>
+          <th scope="col">Estibas</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tr of VectorTrabajo">
+          <th scope="row">{{tr.idTrabajo}}</th>
+          <td>{{tr.idCliente}}</td>
+          <td>{{tr.idTransportista}}</td>
+          <td>{{tr.lugarOrigen}}</td>
+          <td>{{tr.lugarDestino}}</td>
+          <td>{{tr.fechaRecogida | date: 'dd/MM/yyyyy hh:mm'}}</td>
+          <td>{{tr.fechaEntrega | date: 'dd/MM/yyyyy hh:mm'}}</td>
+          <td>{{tr.TipoCamionRequerido}}</td>
+          <td>{{tr.pesoCarga}}</td>
+          <td>{{tr.transporteComestibles}}</td>
+          <td>{{tr.estibas}}</td>
+          <td>
+            <button class="btn btn-warning me-1" 
+              (click)="EditarTrabajo(tr)"><i class="bi bi-pencil-square"></i>Editar</button>
+            <button class="btn btn-danger" (click)="EliminarTrabajo(tr)"><i class="bi bi-trash3"></i>
+              Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalTrabajo" #modalTrabajo data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="modalTrabajoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalTrabajoLabel">{{isNew?'Nuevo ':'Editar '}}Trabajo
+          {{this.trabajoSeleccionado?.idTrabajo}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-cu-trabajo [trabajo]="trabajoSeleccionado"></app-cu-trabajo>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="GuardarTrabajo()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="mostrarToast()">Show live toast</button> 

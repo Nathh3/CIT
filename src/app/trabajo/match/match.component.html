@@ -1,0 +1,50 @@
+<div class="card" style="width: 18rem; " *ngFor="let mt of vectorMatch">
+    <img src="assets/img/person.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Trabajo Disponible</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cliente: {{mt.idCliente}} </li>
+        <li class="list-group-item">Lugar de Recogida: {{mt.lugarOrigen}} </li>
+        <li class="list-group-item">Lugar de Destino: {{mt.lugarDestino}}</li>
+    </ul>
+    <div class="card-body">
+        <button (click)="verMas(mt)" lass="btn btn-primary">Ver más</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalMatch" #modalMatch data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalMatchLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalMatchLabel">{{isNew?'Nuevo ':'Editar '}}Trabajo
+                    {{this._trabajoSeleccionado?.idTrabajo}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modalOpen">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Id Cliente: {{_trabajoSeleccionado?.idCliente}}</li>
+                        <li class="list-group-item">Id Trabajo: {{_trabajoSeleccionado?.idTrabajo}}</li>
+                        <li class="list-group-item">Fecha de Recogida: {{_trabajoSeleccionado?.fechaRecogida}}</li>
+                        <li class="list-group-item">Fecha de Entrega: {{_trabajoSeleccionado?.fechaEntrega}}</li>
+                        <li class="list-group-item">Recogida: {{_trabajoSeleccionado?.lugarOrigen}}</li>
+                        <li class="list-group-item">Destino: {{_trabajoSeleccionado?.lugarDestino}}</li>
+                        <li class="list-group-item">Peso: {{_trabajoSeleccionado?.pesoCarga}}</li>
+                        <li class="list-group-item">Estibas (S/N): {{_trabajoSeleccionado?.estibas}}</li>
+                        <li class="list-group-item">Comestibles (S/N): {{_trabajoSeleccionado?.transporteComestibles}}</li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="ConfirmarTrabajo()">Confirmar</button>
+      </div>
+        </div>
+    </div>
+</div>

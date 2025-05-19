@@ -1,0 +1,66 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+.footer {
+    background-color:#163057;
+    color: white;
+    height: 150px;
+
+    .social-media {
+        display: flex;
+        flex-flow: column nowrap;
+
+        .icons-container {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-evenly;
+        }
+
+        .title {
+            font-family: var(--main-font);
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        img {
+            width: 50px;
+        }
+    }
+
+    .brand-description {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: end;
+
+        img {
+            width: 95px;
+        }
+
+        .copyright {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+
+            img {
+                width: 16px;
+            }
+
+            span {
+                margin-left: 8px;
+                font-family: var(--third-font);
+                font-size: 14px;
+                font-weight: 300;
+            }
+        }
+
+        .brand-name {
+            font-family: var(--main-font);
+            font-size: 16px;
+        }
+    }
+
+}
+
+.clear{
+    clear: both;
+}

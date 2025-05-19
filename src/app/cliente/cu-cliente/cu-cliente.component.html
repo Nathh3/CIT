@@ -1,0 +1,17 @@
+<form>
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" *ngIf="cliente" class="form-control" id="nombre" name="nombre"
+            placeholder="Ingresa el nombre del cliente" [(ngModel)]="cliente.nombre">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input class="form-control" id="email" type="email" *ngIf="cliente" name="email" placeholder="Ingresa el email"
+            [(ngModel)]="cliente.email">
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Telefono</label>
+        <input type="text" *ngIf="cliente" class="form-control" id="telefono" name="telefono"
+            placeholder="Ingresa el numero de telefono" [(ngModel)]="cliente.telefono">
+    </div>
+</form>

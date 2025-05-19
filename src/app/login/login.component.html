@@ -1,0 +1,19 @@
+<div class="login-container">
+    <img src="assets/img/loginImagen.png" class="card-img-top" alt="...">
+    <div class="login-card">
+        <h2>Iniciar Sesión CIT <img src="assets/img/main-icon.png"
+            alt="main-icon" /></h2>
+        <form #LoginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+            <div class="form-group">
+                <label for="usr">Usuario</label>
+                <input type="text" id="usr" name="usr" required [(ngModel)]="usr">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Contraseña</label>
+                <input type="password" id="pwd" name="pwd" required [(ngModel)]="pwd">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
