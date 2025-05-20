@@ -9,6 +9,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'transportista',
+    loadChildren: () => import('./transportista/transportista.module').then(m => m.TransportistaModule)
+
+  },
+  {
     path: 'clientes',
     loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
   },
@@ -18,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'trabajo',
-    loadChildren: () => import('./trabajo/trabajo.module').then(m=> m.TrabajoModule)
+    loadChildren: () => import('./trabajo/trabajo.module').then(m => m.TrabajoModule)
   },
   {
     path: '**', redirectTo: '/home'

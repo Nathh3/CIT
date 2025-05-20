@@ -1,3 +1,11 @@
-.card{
+.card {
     float: left;
+}
+
+.master {
+    padding-top: 6em;
+}
+
+.clear {
+    margin-bottom: 2em;
 }

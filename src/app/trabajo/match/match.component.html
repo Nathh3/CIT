@@ -1,17 +1,20 @@
-<div class="card" style="width: 18rem; " *ngFor="let mt of vectorMatch">
-    <img src="assets/img/person.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Trabajo Disponible</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cliente: {{mt.idCliente}} </li>
-        <li class="list-group-item">Lugar de Recogida: {{mt.lugarOrigen}} </li>
-        <li class="list-group-item">Lugar de Destino: {{mt.lugarDestino}}</li>
-    </ul>
-    <div class="card-body">
-        <button (click)="verMas(mt)" lass="btn btn-primary">Ver más</button>
+<div class="master">
+    <div class="card" style="width: 18rem; " *ngFor="let mt of vectorMatch">
+        <img src="assets/img/person.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Trabajo Disponible</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cliente: {{mt.idCliente}} </li>
+            <li class="list-group-item">Lugar de Recogida: {{mt.lugarOrigen}} </li>
+            <li class="list-group-item">Lugar de Destino: {{mt.lugarDestino}}</li>
+        </ul>
+        <div class="card-body">
+            <button (click)="verMas(mt)" class="btn btn-primary">Ver más</button>
+        </div>
     </div>
 </div>
+<div class="clear"></div>
 
 <!-- Modal -->
 <div class="modal fade" id="modalMatch" #modalMatch data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -35,16 +38,17 @@
                         <li class="list-group-item">Destino: {{_trabajoSeleccionado?.lugarDestino}}</li>
                         <li class="list-group-item">Peso: {{_trabajoSeleccionado?.pesoCarga}}</li>
                         <li class="list-group-item">Estibas (S/N): {{_trabajoSeleccionado?.estibas}}</li>
-                        <li class="list-group-item">Comestibles (S/N): {{_trabajoSeleccionado?.transporteComestibles}}</li>
+                        <li class="list-group-item">Comestibles (S/N): {{_trabajoSeleccionado?.transporteComestibles}}
+                        </li>
 
                     </ul>
                 </div>
 
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="ConfirmarTrabajo()">Confirmar</button>
-      </div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="ConfirmarTrabajo()">Confirmar</button>
+            </div>
         </div>
     </div>
 </div>

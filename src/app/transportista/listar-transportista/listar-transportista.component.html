@@ -1,0 +1,81 @@
+<div class="row justify-content-end">
+    <div class="col-lg-1 col-12">
+        <button class="btn btn-success" (click)="NuevoTransportista()">
+            <i class="bi bi-file-earmark-plus"> </i>
+            Nuevo Transportista
+        </button>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div class="row" *ngIf="!isLoading">
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Tipo Camion</th>
+                    <th scope="col">Capacidad</th>
+                    <th scope="col">Comestibles(S/N)</th>
+                    <th scope="col">Estibas(S/N)</th>
+                    <th scope="col">Fecha Disponible</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let tr of VectorTransportistas">
+                    <th scope="row">{{tr.id}}</th>
+                    <td>{{tr.nombre}}</td>
+                    <td>{{tr.email}}</td>
+                    <td>{{tr.telefono}}</td>
+                    <td>{{tr.tipoCamion}}</td>
+                    <td>{{tr.capacidad}}</td>
+                    <td>{{tr.comestibles}}</td>
+                    <td>{{tr.estibas}}</td>
+                    <td>{{tr.fechaDisponible | date:'dd/MM/yyyy HH:mm'}}</td>
+                    <td>
+                        <button class="btn btn-warning me-1"  (click)="EditarTransportista(tr)"><i
+                                class="bi bi-pencil-square"></i> Editar</button>
+                        <button class="btn btn-danger" (click)="EliminarTransportista(tr)"><i class="bi bi-trash3"></i>
+                            Eliminar</button>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalTransportista" #modalTransportista data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="modalTransportistaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalTransportista">{{isNew?'Nuevo':'Editar'}} Transportista
+                    {{this.transportistaSeleccionado?.nombre}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-cu-transportista [transportista]="transportistaSeleccionado">
+
+                </app-cu-transportista>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="GuardarTransportista()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-primary" (click)="mostrarToast()">Show live toast</button>
