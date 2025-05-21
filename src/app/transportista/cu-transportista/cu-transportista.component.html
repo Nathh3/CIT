@@ -2,41 +2,41 @@
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" *ngIf="transportista" class="form-control" id="nombre" name="nombre"
-            placeholder="Ingrese el nombre del transportista" [(ngModel)]="transportista.nombre">
+            placeholder="Ingrese el nombre del transportista" [(ngModel)]="transportista.Nombre">
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" *ngIf="transportista" class="form-control" id="email" name="email"
-            placeholder="Ingrese el email" [(ngModel)]="transportista.email">
+            placeholder="Ingrese el email" [(ngModel)]="transportista.Email">
     </div>
     <div class="mb-3">
         <label for="telefono" class="form-label">Telefono</label>
         <input type="telefono" *ngIf="transportista" class="form-control" id="telefono" name="telefono"
-            placeholder="Ingrese el telefono" [(ngModel)]="transportista.telefono">
+            placeholder="Ingrese el telefono" [(ngModel)]="transportista.Telefono">
     </div>
     <div class="mb-3">
         <label for="tipoCamion" class="form-label">Tipo Camion</label>
         <input type="text" *ngIf="transportista" class="form-control" id="tipoCamion" name="tipoCamion"
-            placeholder="Ingrese el tipo de camion" [(ngModel)]="transportista.tipoCamion">
+            placeholder="Ingrese el tipo de camion" [(ngModel)]="transportista.TipoCamion">
     </div>
     <div class="mb-3">
         <label for="capacidad" class="form-label">Capacidad</label>
         <input type="number" *ngIf="transportista" class="form-control" id="capacidad" name="capacidad"
-            placeholder="Ingrese la capacidad" [(ngModel)]="transportista.capacidad">
+            placeholder="Ingrese la capacidad" [(ngModel)]="transportista.CapacidadCarga">
     </div>
     <div class="mb-3">
         <label for="comestibles" class="form-label">Comestibles</label>
         <input type="text" *ngIf="transportista" class="form-control" id="comestibles" name="comestibles"
-            placeholder="Ingrese si tiene comestibles (S/N)" [(ngModel)]="transportista.comestibles">
+            placeholder="Ingrese si tiene comestibles (S/N)" [(ngModel)]="transportista.TransporteComestibles">
     </div>
     <div class="mb-3">
         <label for="estibas" class="form-label">Estibas</label>
         <input type="text" *ngIf="transportista" class="form-control" id="estibas" name="estibas"
-            placeholder="Ingrese si tiene estibas (S/N)" [(ngModel)]="transportista.estibas">
+            placeholder="Ingrese si tiene estibas (S/N)" [(ngModel)]="transportista.Estibas">
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="fechaDisponible" class="form-label">Fecha Disponibilidad</label>
         <input class="form-control" id="fechaDisponible" type="datetime-local" *ngIf="transportista" name="fechaDisponible"[ngModel]="formatDateTimeLocal(transportista.fechaDisponible)" (ngModelChange)="updateDate($event)">
             
-    </div>
+    </div> -->
 </form>

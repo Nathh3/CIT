@@ -7,7 +7,7 @@ export  interface Trabajo {
     fechaRecogida: Date;
     fechaEntrega: Date;
     TipoCamionRequerido: string;
-    pesoCarga: number;
-    transporteComestibles: boolean;
-    estibas: boolean;
+    PesoCarga: number;
+    TransporteComestibles: boolean;
+    Estibas: boolean;
 }

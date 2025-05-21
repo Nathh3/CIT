@@ -1,8 +1,8 @@
 export interface Cliente{
-    id: number;
-    nombre: string;
-    email: string;
-    telefono: string;
+    IdCliente: number;
+    Nombre: string;
+    Email: string;
+    Telefono: string;
     // tipoCamionRequerido: string;
     // pesoCarga: number;
     // transporteComestibles:boolean;

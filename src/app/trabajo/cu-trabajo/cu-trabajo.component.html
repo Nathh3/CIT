@@ -37,20 +37,20 @@
     <div class="mb-3">
         <label for="pesoxCarga" class="form-label">Peso por Carga</label>
         <input type="number" *ngIf="trabajo" class="form-control" id="pesoxCarga" name="pesoxCarga"
-            placeholder="Ingresa el peso de la carga" [(ngModel)]="trabajo.pesoCarga">
+            placeholder="Ingresa el peso de la carga" [(ngModel)]="trabajo.PesoCarga">
     </div>
     <div class="mb-3">
         <input type="radio" *ngIf="trabajo" id="comestibles-si" name="comestibles" value="S"
-            [(ngModel)]="trabajo.transporteComestibles">
+            [(ngModel)]="trabajo.TransporteComestibles">
         <label for="comestibles-si">Sí, comestibles</label> <br>
         <input type="radio" *ngIf="trabajo" id="comestibles-no" name="comestibles" value="N"
-            [(ngModel)]="trabajo.transporteComestibles">
+            [(ngModel)]="trabajo.TransporteComestibles">
         <label for="comestibles-no">No, comestibles</label>
     </div>
     <div class="mb-3">
-        <input type="radio" *ngIf="trabajo" id="estibas-si" name="estibas" value="S" [(ngModel)]="trabajo.estibas">
+        <input type="radio" *ngIf="trabajo" id="estibas-si" name="estibas" value="S" [(ngModel)]="trabajo.Estibas">
         <label for="estibas-si">Sí, estibas</label> <br>
-        <input type="radio" *ngIf="trabajo" id="estibas-no" name="estibas" value="N" [(ngModel)]="trabajo.estibas">
+        <input type="radio" *ngIf="trabajo" id="estibas-no" name="estibas" value="N" [(ngModel)]="trabajo.Estibas">
         <label for="estibas-no">No, estibas</label>
     </div>
 </form>

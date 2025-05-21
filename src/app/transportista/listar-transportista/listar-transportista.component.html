@@ -26,21 +26,21 @@
                     <th scope="col">Capacidad</th>
                     <th scope="col">Comestibles(S/N)</th>
                     <th scope="col">Estibas(S/N)</th>
-                    <th scope="col">Fecha Disponible</th>
+                    <!-- <th scope="col">Fecha Disponible</th> -->
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 <tr *ngFor="let tr of VectorTransportistas">
-                    <th scope="row">{{tr.id}}</th>
-                    <td>{{tr.nombre}}</td>
-                    <td>{{tr.email}}</td>
-                    <td>{{tr.telefono}}</td>
-                    <td>{{tr.tipoCamion}}</td>
-                    <td>{{tr.capacidad}}</td>
-                    <td>{{tr.comestibles}}</td>
-                    <td>{{tr.estibas}}</td>
-                    <td>{{tr.fechaDisponible | date:'dd/MM/yyyy HH:mm'}}</td>
+                    <th scope="row">{{tr.IdTransportista}}</th>
+                    <td>{{tr.Nombre}}</td>
+                    <td>{{tr.Email}}</td>
+                    <td>{{tr.Telefono}}</td>
+                    <td>{{tr.TipoCamion}}</td>
+                    <td>{{tr.CapacidadCarga}}</td>
+                    <td>{{tr.TransporteComestibles}}</td>
+                    <td>{{tr.Estibas}}</td>
+                    <!-- <td>{{tr.fechaEntrega| date:'dd/MM/yyyy HH:mm'}}</td> -->
                     <td>
                         <button class="btn btn-warning me-1"  (click)="EditarTransportista(tr)"><i
                                 class="bi bi-pencil-square"></i> Editar</button>
@@ -63,7 +63,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalTransportista">{{isNew?'Nuevo':'Editar'}} Transportista
-                    {{this.transportistaSeleccionado?.nombre}}</h1>
+                    {{this.transportistaSeleccionado?.Nombre}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

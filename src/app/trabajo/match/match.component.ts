@@ -23,13 +23,13 @@ export class MatchComponent {
   vectorMatch: Trabajo[] = [
     {
       idTrabajo: 13, idCliente: 24, idTransportista: 32, lugarOrigen: "Medellin", lugarDestino: "Cali",
-      fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "LTL", pesoCarga: 678,
-      transporteComestibles: true, estibas: false
+      fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "LTL", PesoCarga: 678,
+      TransporteComestibles: true, Estibas: false
     },
     {
       idTrabajo: 25, idCliente: 18, idTransportista: 45, lugarOrigen: "Bogotá", lugarDestino: "Barranquilla",
-      fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "FTL", pesoCarga: 1250,
-      transporteComestibles: false, estibas: true
+      fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "FTL", PesoCarga: 1250,
+      TransporteComestibles: false, Estibas: true
     },
 
   ];

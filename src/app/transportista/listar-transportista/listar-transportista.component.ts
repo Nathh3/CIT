@@ -47,7 +47,7 @@ export class ListarTransportistaComponent {
   NuevoTransportista() {
     this._util.AbrirModal(this.modal);
     this.isNew = true;
-    this.transportistaSeleccionado = { id: 0, nombre: "", fechaDisponible: new Date(), email: " ", telefono: 0, tipoCamion: " ", capacidad: 0, comestibles: false, estibas: false };
+    this.transportistaSeleccionado = { IdTransportista: 0, Nombre: "", Email: " ", Telefono: 0, TipoCamion: " ", CapacidadCarga: 0, TransporteComestibles: false, Estibas: false };
   }
   GuardarTransportista() {
     if (this.isNew) {
@@ -68,7 +68,7 @@ export class ListarTransportistaComponent {
     Swal.fire(
       {
         icon: 'question',
-        title: `¿Estás seguro de eliminar el transportista? '${tr.nombre}'?`,
+        title: `¿Estás seguro de eliminar el transportista? '${tr.Nombre}'?`,
         showCancelButton: true,
         showConfirmButton: true,
         cancelButtonText: 'No,conservar',

@@ -16,7 +16,7 @@ formatDateTimeLocal(fecha:Date){
 let fechaFormateada = format(fecha,"yyyy-MM-dd'T'HH:mm",{timeZone:"America/Bogota"});
 return fechaFormateada;
 }
-updateDate(valor:string){
-  this.transportista!.fechaDisponible = new Date(valor);
-}
+// updateDate(valor:string){
+//   this.transportista!.fechaDisponible = new Date(valor);
+// }
 }

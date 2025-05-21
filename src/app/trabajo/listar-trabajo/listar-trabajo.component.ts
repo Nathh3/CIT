@@ -33,6 +33,7 @@ export class ListarTrabajoComponent {
   isLoading = true;
 
     constructor(private _util: UtiltyService, private _trabajoService: TrabajoService){
+      this.LoadTrabajo();
 
     }
 
@@ -56,7 +57,7 @@ export class ListarTrabajoComponent {
     this.isNew = true;
     this.trabajoSeleccionado = {
       idTrabajo: 0, idCliente: 0, idTransportista: 0, lugarOrigen: "", lugarDestino: "",
-      fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "", pesoCarga: 0, transporteComestibles: false, estibas: false
+      fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "", PesoCarga: 0, TransporteComestibles: false, Estibas: false
     }
 
   }

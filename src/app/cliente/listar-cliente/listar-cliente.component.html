@@ -26,10 +26,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let cl of VectorClientes">
-          <th scope="row">{{cl.id}}</th>
-          <td>{{cl.nombre}}</td>
-          <td>{{cl.email}}</td>
-          <td>{{cl.telefono}}</td>
+          <th scope="row">{{cl.IdCliente}}</th>
+          <td>{{cl.Nombre}}</td>
+          <td>{{cl.Email}}</td>
+          <td>{{cl.Telefono}}</td>
           <!-- <td>{{cl.tipoCamionRequerido}}</td>
           <td>{{cl.pesoCarga}}</td>
           <td>{{cl.transporteComestibles}}</td>
@@ -54,7 +54,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="modalClienteLabel">{{isNew?'Nuevo ':'Editar '}}Cliente
-          {{this.clienteSeleccionado?.nombre}}</h1>
+          {{this.clienteSeleccionado?.Nombre}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

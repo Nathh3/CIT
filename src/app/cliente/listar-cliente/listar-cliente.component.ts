@@ -25,17 +25,17 @@ export class ListarClienteComponent {
   isNew: boolean = false;
   isLoading = true;
 
-  constructor(private _clienteService: ClienteService, private _util: UtiltyService){
-    this.LoadClientes
+  constructor(private _clienteService: ClienteService, private _util: UtiltyService) {
+    this.LoadClientes();
   }
 
-  LoadClientes(){
-    this.isLoading =true;
+  LoadClientes() {
+    this.isLoading = true;
     this._clienteService.getclientes()
-    .subscribe((rs)=>{
-      this.VectorClientes = rs;
-      this.isLoading = false;
-    });
+      .subscribe((rs) => {
+        this.VectorClientes = rs;
+        this.isLoading = false;
+      });
   }
 
   EditarCliente(cliente: Cliente) {
@@ -49,7 +49,7 @@ export class ListarClienteComponent {
     this._util.AbrirModal(this.modal);
     this.isNew = true;
     this.clienteSeleccionado = {
-      id: 0, nombre: "", email: "", telefono: ""
+      IdCliente: 0, Nombre: "", Email: "", Telefono: ""
     };
 
   }
@@ -75,7 +75,7 @@ export class ListarClienteComponent {
 
     Swal.fire({
       icon: "question",
-      title: `¿Está seguro de eliminar el/la cliente ${cl.nombre}?`,
+      title: `¿Está seguro de eliminar el/la cliente ${cl.Nombre}?`,
       showCancelButton: true,
       showConfirmButton: true,
       cancelButtonText: "No, conservar",
@@ -117,7 +117,7 @@ export class ListarClienteComponent {
   //   }
   // }
 
-  mostrarToast(){
+  mostrarToast() {
     this._util.showToaster('Mensaje prueba', 2, 'warning');
   }
 

@@ -1,5 +1,5 @@
 export const environment = {
-    production:false,
-    urlApiBase: 'https://testap1.omarcardona.com/usuario/'
+    production: false,
+    urlApiBase: 'http://localhost:3000/api/'
 
 };

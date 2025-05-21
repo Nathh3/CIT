@@ -1,14 +1,14 @@
+<div class="pt">
 <div class="row justify-content-end">
   <div class="col-lg-1 col-12">
-    <button class="btn btn-success" (click)="NuevoTrabajo()"><i
-        class="bi bi-file-earmark-plus"></i>Nuevo
+    <button class="btn btn-success" (click)="NuevoTrabajo()"><i class="bi bi-file-earmark-plus"></i>Nuevo
     </button>
 
     <div class="d-flex justify-content-center" *ngIf="isLoading">
-  <div class="spinner-border" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div>
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -33,7 +33,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let tr of VectorTrabajo">
-          <th scope="row">{{tr.idTrabajo}}</th>
+          <td scope="row">{{tr.idTrabajo}}</td>
           <td>{{tr.idCliente}}</td>
           <td>{{tr.idTransportista}}</td>
           <td>{{tr.lugarOrigen}}</td>
@@ -41,12 +41,12 @@
           <td>{{tr.fechaRecogida | date: 'dd/MM/yyyyy hh:mm'}}</td>
           <td>{{tr.fechaEntrega | date: 'dd/MM/yyyyy hh:mm'}}</td>
           <td>{{tr.TipoCamionRequerido}}</td>
-          <td>{{tr.pesoCarga}}</td>
-          <td>{{tr.transporteComestibles}}</td>
-          <td>{{tr.estibas}}</td>
+          <td>{{tr.PesoCarga}}</td>
+          <td>{{tr.TransporteComestibles}}</td>
+          <td>{{tr.Estibas}}</td>
           <td>
-            <button class="btn btn-warning me-1" 
-              (click)="EditarTrabajo(tr)"><i class="bi bi-pencil-square"></i>Editar</button>
+            <button class="btn btn-warning me-1" (click)="EditarTrabajo(tr)"><i
+                class="bi bi-pencil-square"></i>Editar</button>
             <button class="btn btn-danger" (click)="EliminarTrabajo(tr)"><i class="bi bi-trash3"></i>
               Eliminar</button>
           </td>
@@ -55,7 +55,7 @@
     </table>
   </div>
 </div>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="modalTrabajo" #modalTrabajo data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="modalTrabajoLabel" aria-hidden="true">
@@ -77,4 +77,4 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary" (click)="mostrarToast()">Show live toast</button> 
+<button type="button" class="btn btn-primary" (click)="mostrarToast()">Show live toast</button>
