@@ -30,7 +30,32 @@ export class MatchComponent {
       idTrabajo: 25, idCliente: 18, idTransportista: 45, lugarOrigen: "Bogotá", lugarDestino: "Barranquilla",
       fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "FTL", PesoCarga: 1250,
       TransporteComestibles: false, Estibas: true
-    },
+    },{
+  idTrabajo: 26,
+  idCliente: 22,
+  idTransportista: 47,
+  lugarOrigen: "Medellín",
+  lugarDestino: "Cali",
+  fechaRecogida: new Date(),
+  fechaEntrega: new Date(),
+  TipoCamionRequerido: "Refrigerado",
+  PesoCarga: 800,
+  TransporteComestibles: true,
+  Estibas: false
+},
+{
+  idTrabajo: 27,
+  idCliente: 19,
+  idTransportista: 49,
+  lugarOrigen: "Cartagena",
+  lugarDestino: "Manizales",
+  fechaRecogida: new Date(),
+  fechaEntrega: new Date(),
+  TipoCamionRequerido: "Plataforma",
+  PesoCarga: 1500,
+  TransporteComestibles: false,
+  Estibas: true
+}
 
   ];
 
@@ -50,6 +75,7 @@ export class MatchComponent {
       title: "Trabajo confirmado correctamente",
       icon: 'success'
     })
+      .then(() => this._util.CerrarModal(this.modalTrabajo));
 
 
   }

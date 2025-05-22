@@ -8,144 +8,145 @@
     --third-font: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
 }
 
-
 body {
     margin: 0px;
 }
 
 .navbar {
     background-color: var(--primary-blue);
-
-    img {
-        min-height: 34px;
-    }
-
-    h1 {
-        font-family: var(--main-font);
-        color: white;
-    }
 }
 
-.header {
-    background-color: var(--secondary-blue);
+.navbar img {
+    min-height: 34px;
+}
+
+.navbar h1 {
+    font-family: var(--main-font);
+    color: white;
+}
+
+/* Estilos para el header (ahora header-container) */
+.header-container {
+    background-color: #B8BCC7; /* Color gris similar al de la segunda imagen */
     font-family: var(--second-font);
-
-    span {
-        display: block;
-    }
-
-    img {
-        width: 550px;
-    }
-
-    .title {
-        font-size: 54px;
-    }
-
-    .subtitle {
-        font-weight: 500;
-        font-size: 34px;
-        margin: 0;
-    }
 }
 
-.benefits {
+.header-container span {
+    display: block;
+}
 
-    .benefit-item {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-        max-width: 25%;
+.header-container img {
+    width: 550px;
+}
 
-        .icon {
-            display: flex;
-            align-items: center;
-            height: 61.25px;
-            padding: 12px;
+.header-container .title {
+    font-size: 54px;
+}
 
-            img {
-                width: 61.25px;
-            }
-        }
+.header-container .subtitle {
+    font-weight: 500;
+    font-size: 34px;
+    margin: 0;
+}
 
-        .title {
-            font-family: var(--second-font);
-            font-weight: 500;
-            font-size: 24px;
-            margin-top: 10px;
-        }
+/* Estilos para benefits (ahora benefits-container) */
+.benefits-container {
+    background-color: white;
+}
 
-        .description {
-            padding-inline: 14px;
-            font-weight: 300;
-            text-align: center;
-            font-family: var(--third-font);
+.benefits-container .benefit-item {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
 
-        }
-    }
+.benefits-container .benefit-item .icon {
+    display: flex;
+    align-items: center;
+    height: 61.25px;
+    padding: 12px;
+}
+
+.benefits-container .benefit-item .icon img {
+    width: 61.25px;
+}
+
+.benefits-container .benefit-item .title {
+    font-family: var(--second-font);
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.benefits-container .benefit-item .description {
+    padding-inline: 14px;
+    font-weight: 300;
+    text-align: center;
+    font-family: var(--third-font);
 }
 
 .footer {
     background-color: var(--primary-blue);
     color: white;
     height: 150px;
+}
 
-    .social-media {
-        display: flex;
-        flex-flow: column nowrap;
+.footer .social-media {
+    display: flex;
+    flex-flow: column nowrap;
+}
 
-        .icons-container {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-evenly;
-        }
+.footer .social-media .icons-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
 
-        .title {
-            font-family: var(--main-font);
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
+.footer .social-media .title {
+    font-family: var(--main-font);
+    font-size: 32px;
+    margin-bottom: 12px;
+}
 
-        img {
-            width: 50px;
-        }
-    }
+.footer .social-media img {
+    width: 50px;
+}
 
-    .brand-description {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: end;
+.footer .brand-description {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: end;
+}
 
-        img {
-            width: 95px;
-        }
+.footer .brand-description img {
+    width: 95px;
+}
 
-        .copyright {
-            margin-top: 8px;
-            margin-bottom: 8px;
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
+.footer .brand-description .copyright {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
 
-            img {
-                width: 16px;
-            }
+.footer .brand-description .copyright img {
+    width: 16px;
+}
 
-            span {
-                margin-left: 8px;
-                font-family: var(--third-font);
-                font-size: 14px;
-                font-weight: 300;
-            }
-        }
+.footer .brand-description .copyright span {
+    margin-left: 8px;
+    font-family: var(--third-font);
+    font-size: 14px;
+    font-weight: 300;
+}
 
-        .brand-name {
-            font-family: var(--main-font);
-            font-size: 16px;
-        }
-    }
-
+.footer .brand-description .brand-name {
+    font-family: var(--main-font);
+    font-size: 16px;
 }
 
 .rounded-container {

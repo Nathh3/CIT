@@ -17,4 +17,8 @@ export class ClienteService {
     getclientes(): Observable<Cliente[]> {
         return this._http.get<Cliente[]>(this.apiBase + '/');
     }
+
+    deleteCliente(id: number): Observable<Cliente> {
+        return this._http.delete<Cliente>(this.apiBase + '/' + id);
+    }
 }

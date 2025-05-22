@@ -1,11 +1,17 @@
 .card {
-    float: left;
+  float: left;
+  margin: 1%;
 }
 
 .master {
-    padding-top: 6em;
+  padding-top: 6em;
 }
 
 .clear {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
+}
+
+h1 {
+  text-align: center;
+  color: #163057;
 }

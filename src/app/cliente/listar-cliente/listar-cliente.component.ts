@@ -93,11 +93,16 @@ export class ListarClienteComponent {
     }
     ).then(rs => {
       if (rs.isConfirmed) {
-        //llamada a la API DELETE 
-        Swal.fire({
-          title: "Cliente eliminado correctamente",
-          icon: 'success'
-        })
+        this._clienteService.deleteCliente(cl.IdCliente)
+          .subscribe({
+            next: () => {
+              Swal.fire({
+                title: "Cliente eliminado correctamente",
+                icon: 'success'
+              })
+            }
+          })
+
       }
     });
   }
