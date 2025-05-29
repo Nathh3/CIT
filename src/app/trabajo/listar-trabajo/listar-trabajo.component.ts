@@ -14,36 +14,24 @@ import { TrabajoService } from '../../services/trabajo.service';
 export class ListarTrabajoComponent {
   @ViewChild('modalTrabajo') modal: ElementRef | undefined;
 
-  VectorTrabajo: Trabajo[] = [
-    // {
-    //   idTrabajo: 13, idCliente: 24, idTransportista: 32, lugarOrigen: "Medellin", lugarDestino: "Cali",
-    //   fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "LTL", pesoCarga: 678,
-    //   transporteComestibles: true, estibas: false
-    // },
-    // {
-    //   idTrabajo: 25, idCliente: 18, idTransportista: 45, lugarOrigen: "Bogotá", lugarDestino: "Barranquilla",
-    //   fechaRecogida: new Date(), fechaEntrega: new Date(), TipoCamionRequerido: "FTL", pesoCarga: 1250,
-    //   transporteComestibles: false, estibas: true
-    // },
-
-  ];
+  VectorTrabajo: Trabajo[] = [];
 
   trabajoSeleccionado: Trabajo | undefined = undefined;
   isNew: boolean = false;
   isLoading = true;
 
-    constructor(private _util: UtiltyService, private _trabajoService: TrabajoService){
-      this.LoadTrabajo();
+  constructor(private _util: UtiltyService, private _trabajoService: TrabajoService) {
+    this.LoadTrabajo();
 
-    }
+  }
 
-    LoadTrabajo(){
-    this.isLoading =true;
+  LoadTrabajo() {
+    this.isLoading = true;
     this._trabajoService.getTrabajo()
-    .subscribe((rs)=>{
-      this.VectorTrabajo = rs;
-      this.isLoading = false;
-    });
+      .subscribe((rs) => {
+        this.VectorTrabajo = rs;
+        this.isLoading = false;
+      });
   }
 
   EditarTrabajo(trabajo: Trabajo) {
@@ -64,20 +52,50 @@ export class ListarTrabajoComponent {
 
   GuardarTrabajo() {
     if (this.isNew) {
-      this.VectorTrabajo.push(this.trabajoSeleccionado!);
-      this.trabajoSeleccionado = undefined;
-      this._util.CerrarModal(this.modal);
+      this._trabajoService.createTrabajo(this.trabajoSeleccionado!).subscribe({
+        next: (rs) => {
+          this.VectorTrabajo.push(this.trabajoSeleccionado!);
+          this.trabajoSeleccionado = undefined;
+          this._util.CerrarModal(this.modal);
+          Swal.fire({
+            title: 'Trabajo creado correctamente',
+            icon: 'success'
+          });
+
+        },
+        error: () => {
+          Swal.fire({
+            title: 'Error al crear el transportista',
+            icon: 'error'
+          });
+        }
+      });
+
     } else {
-      this.trabajoSeleccionado = undefined;
-      this._util.CerrarModal(this.modal);
+      this._trabajoService.updateTrabajo(this.trabajoSeleccionado!.idTrabajo, this.trabajoSeleccionado!)
+        .subscribe({
+          next: () => {
+            this.trabajoSeleccionado = undefined;
+            this._util.CerrarModal(this.modal);
+            Swal.fire({
+              title: 'Cambios guardados correctamente',
+              icon: 'success'
+            });
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Hubo un error, no se pudo cambiar los datos',
+              icon: 'error'
+            });
+          }
+        })
     }
-    Swal.fire({title:'Trabajo guardado correctamente', icon: 'success'})
   }
 
-  EliminarTrabajo(tr: Trabajo) {
+  EliminarTrabajo(trb: Trabajo) {
     Swal.fire({
       icon: "question",
-      title: `¿Está seguro de eliminar el trabajoe ${tr.idTrabajo}?`,
+      title: `¿Está seguro de eliminar el trabajoe ${trb.idTrabajo}?`,
       showCancelButton: true,
       showConfirmButton: true,
       cancelButtonText: "No, conservar",
@@ -95,32 +113,27 @@ export class ListarTrabajoComponent {
     }
     ).then(rs => {
       if (rs.isConfirmed) {
-        //llamada a la API DELETE 
-        Swal.fire({
-          title: "Trabajo eliminado correctamente",
-          icon: 'success'
-        })
+        this._trabajoService.deleteTrabajo(trb.idTrabajo)
+          .subscribe({
+            next: () => {
+              Swal.fire({
+                title: 'Trabajo eliminado correctamente',
+                icon: 'success'
+              });
+            },
+            error: () => {
+              Swal.fire({
+                title: 'Hubo un error, no se pudo cambiar los datos',
+                icon: 'error'
+              });
+            }
+          })
       }
     });
 
   }
 
-  // CerrarModal(modal: ElementRef | undefined) {
-  //   if (modal) {
-  //     let bsModal = Modal.getInstance(modal?.nativeElement)
-  //     bsModal?.hide();
-
-  //     let backdrop = document.querySelector(".modal-backdrop.fade.show");
-  //     if (backdrop) {
-  //       backdrop.parentNode?.removeChild(backdrop);
-  //     }
-
-  //     document.body.removeAttribute('style');
-  //     document.body.removeAttribute('class');
-  //   }
-  // }
-
-  mostrarToast(){
+  mostrarToast() {
     this._util.showToaster('Mensaje prueba', 2, 'warning');
   }
 

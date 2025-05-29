@@ -7,5 +7,6 @@ export interface Transportista {
   CapacidadCarga: number;
   TransporteComestibles: boolean;
   Estibas: boolean;
+  // FechaDisponible: Date;
 
 }

@@ -9,13 +9,27 @@ import { environment } from '../../environments/environment';
 })
 export class TransportistaService {
 
-  apiBase='';
+  apiBase = '';
 
-  constructor(private _http:HttpClient) { 
-    this.apiBase= environment.urlApiBase + 'transportista';
+  constructor(private _http: HttpClient) {
+    this.apiBase = environment.urlApiBase + 'transportista';
   }
 
-  getTransportistas(): Observable<Transportista[]> {
-    return this._http.get<Transportista[]>(this.apiBase+'/');
+  getTransportista(): Observable<Transportista[]> {
+    return this._http.get<Transportista[]>(this.apiBase + '/');
   }
+
+  deleteTransportista(id: number): Observable<Transportista> {
+    return this._http.delete<Transportista>(this.apiBase + '/' + id);
+  }
+
+  createTransportista(transportista: Transportista): Observable<Transportista> {
+    return this._http.post<Transportista>(this.apiBase, transportista);
+
+  }
+
+  updateTransportista(id: number, transportista: Transportista): Observable<Transportista> {
+    return this._http.put<Transportista>(this.apiBase + '/' + id, transportista)
+  }
+
 }

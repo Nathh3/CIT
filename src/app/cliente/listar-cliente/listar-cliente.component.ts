@@ -16,11 +16,7 @@ export class ListarClienteComponent {
   @ViewChild('modalCliente') modal: ElementRef | undefined;
 
   VectorClientes: Cliente[] = [
-
-    // { id: 1, nombre: "Nathalia", email: "natha@email.com", telefono: "345671"},
-    // { id: 2, nombre: "Sebastian", email: "sebas@email.com	", telefono: "769021" }
-  ]; //vector creado del tipo cliente, estoy simulando objetos que me llegan de la API
-
+  ];
   clienteSeleccionado: Cliente | undefined = undefined;
   isNew: boolean = false;
   isLoading = true;
@@ -44,7 +40,6 @@ export class ListarClienteComponent {
     this.clienteSeleccionado = cliente;
   }
 
-  //cree un objeto nuevo y vacio
   NuevoCliente() {
     this._util.AbrirModal(this.modal);
     this.isNew = true;
@@ -56,19 +51,45 @@ export class ListarClienteComponent {
 
   GuardarCliente() {
     if (this.isNew) {
-      this.VectorClientes.push(this.clienteSeleccionado!); // llama una API para BD
-      this.clienteSeleccionado = undefined;
-      this._util.CerrarModal(this.modal)
+      this._clienteService.createClient(this.clienteSeleccionado!)
+        .subscribe({
+          next: (rs) => {
+            this.VectorClientes.push(this.clienteSeleccionado!);
+            this.clienteSeleccionado = undefined;
+            this._util.CerrarModal(this.modal);
+            Swal.fire({
+              title: 'Cliente creado correctamente',
+              icon: 'success'
+            });
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Error al crear el cliente',
+              icon: 'error'
+            });
+          }
+        })
     } else {
-      this.clienteSeleccionado = undefined;
-      this._util.CerrarModal(this.modal)
+      this._clienteService.updateCliente(this.clienteSeleccionado!.IdCliente,
+        this.clienteSeleccionado!)
+        .subscribe({
+          next: () => {
+            this.clienteSeleccionado = undefined;
+            this._util.CerrarModal(this.modal);
+            Swal.fire({
+              title: 'Cambios guardados correctamente',
+              icon: 'success'
+            });
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Hubo un error, no se pudo cambiar los datos',
+              icon: 'error'
+            });
+          }
+        })
 
     }
-
-    Swal.fire({
-      title: "Cambios guardados correctamente",
-      icon: "success"
-    })
   }
 
   EliminarCliente(cl: Cliente) {
@@ -97,9 +118,15 @@ export class ListarClienteComponent {
           .subscribe({
             next: () => {
               Swal.fire({
-                title: "Cliente eliminado correctamente",
+                title: 'Cliente eliminado correctamente',
                 icon: 'success'
-              })
+              });
+            },
+            error: () => {
+              Swal.fire({
+                title: 'Hubo un error, no se pudo eliminarlos datos',
+                icon: 'error'
+              });
             }
           })
 

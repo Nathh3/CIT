@@ -15,10 +15,7 @@ export class ListarTransportistaComponent {
   @ViewChild('modalTransportista') modal: ElementRef | undefined;
 
 
-
   VectorTransportistas: Transportista[] = []; //
-
-
   transportistaSeleccionado: Transportista | undefined = undefined;
   isNew: boolean = false;
 
@@ -29,8 +26,8 @@ export class ListarTransportistaComponent {
 
   }
   LoadTransportistas() {
-    this.isLoading = false;//si lo pongo en true, aparece el spinner
-    this._transportistaService.getTransportistas()
+    this.isLoading = true;
+    this._transportistaService.getTransportista()
       .subscribe((rs) => {
         this.VectorTransportistas = rs;
         this.isLoading = false;
@@ -51,18 +48,45 @@ export class ListarTransportistaComponent {
   }
   GuardarTransportista() {
     if (this.isNew) {
-      this.VectorTransportistas.push(this.transportistaSeleccionado!); //LLamar api POST
-      this.transportistaSeleccionado = undefined;
-      this._util.CerrarModal(this.modal);
+      this._transportistaService.createTransportista(this.transportistaSeleccionado!)
+        .subscribe({
+          next: (rs) => {
+            this.VectorTransportistas.push(rs);
+            this.transportistaSeleccionado = undefined;
+            this._util.CerrarModal(this.modal);
+            Swal.fire({
+              title: 'Transportista creado correctamente',
+              icon: 'success'
+            });
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Error al crear transportista',
+              icon: 'error'
+            });
+          }
+        });
+    } else {
+      this._transportistaService.updateTransportista(
+        this.transportistaSeleccionado!.IdTransportista,
+        this.transportistaSeleccionado!
+      ).subscribe({
+        next: () => {
+          this.transportistaSeleccionado = undefined;
+          this._util.CerrarModal(this.modal);
+          Swal.fire({
+            title: 'Cambios guardados correctamente',
+            icon: 'success'
+          });
+        },
+        error: () => {
+          Swal.fire({
+            title: 'Hubo un error, no se pudo cambiar los datos',
+            icon: 'error'
+          });
+        }
+      });
     }
-    else {//llamar la api PUT
-      this.transportistaSeleccionado = undefined;
-      this._util.CerrarModal(this.modal);
-    }
-    Swal.fire({
-      title: 'Cambios Guardados Correctamente',
-      icon: 'success'
-    })
   }
   EliminarTransportista(tr: Transportista) {
     Swal.fire(
@@ -81,16 +105,27 @@ export class ListarTransportistaComponent {
           cancelButton: 'btn btn-secondary me-1',
           confirmButton: 'btn btn-danger'
         }
-      }
-    )
+      })
       .then(rs => {
         if (rs.isConfirmed) {
-          Swal.fire({
-            title: 'Transportista eliminado correctamente',
-            icon: 'success'
-          })
+          this._transportistaService.deleteTransportista(tr.IdTransportista)
+            .subscribe({
+              next: () => {
+                Swal.fire({
+                  title: 'Transportista eliminado correctamente',
+                  icon: 'success'
+                });
+              },
+              error: () => {
+                Swal.fire({
+                  title: 'Hubo un error, no se pudo eliminar los datos',
+                  icon: 'error'
+                });
+              }
+            })
+
         }
-      });
+      })
   }
 
   mostrarToast() {
